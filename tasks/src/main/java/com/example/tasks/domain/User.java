@@ -1,7 +1,11 @@
 package com.example.tasks.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +27,8 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    @OneToMany(mappedBy = "responsible", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Task> taskList=new ArrayList<>();
 }
