@@ -6,6 +6,8 @@ import com.example.tasks.service.TaskService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
@@ -26,8 +28,8 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<Task> addTask(@RequestBody Task task) {
-        return ResponseEntity.ok(taskService.addTask(task));
+    public Task addTask(@RequestBody Task task) {
+        return taskService.addTask(task);
     }
 
     @PutMapping("/{taskId}/user/{userId}")
@@ -41,12 +43,12 @@ public class TaskController {
     }
 
     @PostMapping("/{parentTaskId}/subtasks/{subTaskId}")
-    public ResponseEntity<Task> addSubTask(@PathVariable Long parentTaskId, @PathVariable Long subTaskId) {
-        return ResponseEntity.ok(taskService.addSubTask(parentTaskId, subTaskId));
+    public Task addSubTask(@PathVariable Long parentTaskId, @PathVariable Long subTaskId) {
+        return taskService.addSubTask(parentTaskId, subTaskId);
     }
 
     @PostMapping("/search")
-    public ResponseEntity<?> searchParams(@RequestBody SearchDTO searchDTO) {
-            return ResponseEntity.ok().body(taskService.getSearchParams(searchDTO));
+    public List<Task> searchParams(@RequestBody SearchDTO searchDTO) {
+            return taskService.getSearchParams(searchDTO);
     }
 }
