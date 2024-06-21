@@ -5,8 +5,9 @@ Tech: Java, SpringBoot, PostgreSql
 Steps to run this app:
 
 1. Set up SDK & clean install
-2. Run app with spring.jpa.hibernate.ddl-auto=create in order to create the tables; change it back to update if you make any changes
-3. Run sql script in order to have some data in your tables(you can find them in the resources package)
+2. You should have postgresql installed and create a db called task, and add in app properties you should add you credentials
+3. Run app with spring.jpa.hibernate.ddl-auto=create in order to create the tables; change it back to update if you make any changes
+4. Run sql script in order to have some data in your tables(you can find them in the resources package)
 
 Testing:
 1. There is an account with username: 1 email: 1@gmail.com and password 1 and you can login with it.
